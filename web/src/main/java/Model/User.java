@@ -42,4 +42,39 @@ public class User {
        this.photo=photo;
     }
 
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public LocalDate getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public boolean getLangRu() {
+        return langRu;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public Object getPasswordHash() {
+        return password;
+    }
+
+    public byte[] getPhoto() {
+        return photo;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
+    }
 }
