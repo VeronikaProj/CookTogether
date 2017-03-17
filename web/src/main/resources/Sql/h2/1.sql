@@ -21,9 +21,7 @@ CREATE TABLE Picture (
 CREATE TABLE Dish_type (
   id          INT AUTO_INCREMENT PRIMARY KEY,
   type         VARCHAR(100) NOT NULL ,
-  id_picture  INT NOT NULL ,
-  UNIQUE (type),
-  FOREIGN KEY (id_picture) REFERENCES Picture (id)
+  UNIQUE (type)
 );
 
 CREATE TABLE Recipe (
