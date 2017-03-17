@@ -11,7 +11,8 @@ CREATE TABLE User (
 );
 CREATE TABLE Product (
   id          INT AUTO_INCREMENT PRIMARY KEY,
-  name        VARCHAR(100) NOT NULL
+  name        VARCHAR(100) NOT NULL,
+    UNIQUE (name)
 );
 CREATE TABLE Picture (
   id          INT AUTO_INCREMENT PRIMARY KEY,
