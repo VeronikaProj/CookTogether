@@ -16,7 +16,7 @@ public class UserDao {
 
     public static final String SELECT_ALL_SQL =
             "SELECT id, first_name, last_name, date_of_birth, lang_Ru," +
-                    "email, password, photo " +
+                    "email, password_hash, photo " +
                     "FROM User";
 
     private DataSource dataSource;
@@ -30,7 +30,7 @@ public class UserDao {
         try (Connection connection = dataSource.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
                      "INSERT INTO User (first_name, last_name, date_of_birth, lang_Ru," +
-                             "email, password, photo) " +
+                             "email, password_hash, photo) " +
                              "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS)) {
 
             preparedStatement.setObject(1, user.getFirstName());
@@ -72,7 +72,7 @@ public class UserDao {
         User user=null;
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement("SELECT id, first_name, last_name, date_of_birth, lang_Ru," +
-                     "email, password, photo " +
+                     "email, password_hash, photo " +
                      "FROM User WHERE id=?")){
              ResultSet resultSet = statement.executeQuery();
 

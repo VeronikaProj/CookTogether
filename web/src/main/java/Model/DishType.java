@@ -4,12 +4,12 @@ package Model;
  * Created by Ника on 16.03.2017.
  */
 public enum DishType {
-    SOUP(1,"Суп","soup.gif"),
-    DRINK(2,"Напиток","drink.gif"),
-    SALAD(3, "Салат","salad.gif"),
-    DESSERT(4, "Десерт","dessert.gif"),
-    MAIN_DISH(5,"Основное блюдо", "main_dish.gif"),
-    GARNISH(6,"Гарнир", "garnish.gif");
+    SOUP(1,"суп","soup.gif"),
+    DRINK(2,"напиток","drink.gif"),
+    SALAD(3, "салат","salad.gif"),
+    DESSERT(4, "десерт","dessert.gif"),
+    MAIN_DISH(5,"основное блюдо", "main_dish.gif"),
+    GARNISH(6,"гарнир", "garnish.gif");
 
     private int id;
     private String value;

@@ -5,7 +5,7 @@ CREATE TABLE User (
   date_of_birth         DATE,
   lang_Ru      BOOL,
   email       VARCHAR(100) NOT NULL,
-  password    VARCHAR(255) NOT NULL,
+  password_hash    VARCHAR(255) NOT NULL,
   photo       BLOB,
   UNIQUE (email)
 );
@@ -40,9 +40,9 @@ CREATE TABLE Recipe (
   FOREIGN KEY (id_picture) REFERENCES Picture (id),
   FOREIGN KEY (id_user) REFERENCES User (id),
 );
-
 CREATE TABLE Ingredient (
   id            INT AUTO_INCREMENT PRIMARY KEY,
+
   id_product    INT NOT NULL,
   id_recipe     INT NOT NULL,
   amount        VARCHAR(200) NOT NULL,
