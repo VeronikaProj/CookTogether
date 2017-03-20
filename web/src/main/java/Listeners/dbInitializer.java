@@ -28,33 +28,33 @@ public class dbInitializer implements ServletContextListener {
         @Resource(name = "jdbc/TestDB")
         private DataSource dataSource;
 
-    //private static final Logger logger = LogManager.getLogger(dbInitializer.class.getName());
+    private static final Logger logger = LogManager.getLogger(dbInitializer.class.getName());
 
         @Override
         public void contextInitialized(ServletContextEvent sce) {
-            //logger.info("Server starting");
+            logger.info("Server starting");
             Pattern pattern = Pattern.compile("^\\d+\\.sql$");
             Path sqlDirPath = Paths.get(
-                    //sce.getServletContext().getRealPath("/WEB-INF/classes/Sql/h2"));
                     sce.getServletContext().getRealPath("/WEB-INF/classes/Sql/h2"));
 
             try (Connection connection = dataSource.getConnection();
                  Statement statement = connection.createStatement();
                  DirectoryStream<Path> paths = Files.newDirectoryStream(sqlDirPath)) {
-                for (Path filePath : paths)
+                for (Path filePath : paths){
+                    logger.error("File path"+filePath.getFileName());
                     if (pattern.matcher(filePath.toFile().getName()).find()) {
                         statement.addBatch(
                                 Files.lines(filePath)
                                         .collect(Collectors.joining())
                         );
-                    }
+                    }}
                 statement.executeBatch(); // this.getClass().getResourceAsStream("/Sql")
             }
             catch(SQLException e){
-                //logger.error("Sql connection failed. Can't find db"+dataSource.toString());
+                logger.error("Sql connection failed. Can't find db"+e.getMessage());
             }
             catch (IOException e){
-                //logger.error("Files with Sql script wasn't found in "+sqlDirPath.toString());
+                logger.error("Files with Sql script wasn't found in "+sqlDirPath.toString());
         }
     }
 

@@ -31,7 +31,7 @@ CREATE TABLE Recipe (
   name               VARCHAR(100) NOT NULL,
   date               DATETIME,
   id_type            INT NOT NULL,
-  id_picture         INT NOT NULL,
+  id_picture         INT,
   number_of_portions INT NOT NULL,
   period              VARCHAR(100),
   recipe              VARCHAR(600),

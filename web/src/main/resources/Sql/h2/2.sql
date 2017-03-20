@@ -1,10 +1,10 @@
 
-INSERT INTO Dish_type (type) VALUES  'суп';
-INSERT INTO Dish_type (type) VALUES  'напиток';
-INSERT INTO Dish_type (type) VALUES  'салат';
-INSERT INTO Dish_type (type) VALUES  'десерт';
-INSERT INTO Dish_type (type) VALUES  'основное блюдо';
-INSERT INTO Dish_type (type) VALUES  'гарнир';
+INSERT INTO Dish_type (type) VALUES  ('суп');
+INSERT INTO Dish_type (type) VALUES  ('напиток');
+INSERT INTO Dish_type (type) VALUES  ('салат');
+INSERT INTO Dish_type (type) VALUES  ('десерт');
+INSERT INTO Dish_type (type) VALUES  ('основное блюдо');
+INSERT INTO Dish_type (type) VALUES  ('гарнир');
 
 INSERT INTO Product (name) VALUES ('картофель');
 INSERT INTO Product (name) VALUES ('молоко');
@@ -44,8 +44,8 @@ INSERT INTO Ingredient (id_product, id_recipe, amount) VALUES (5,1,'пол ст�
 
 INSERT INTO Ingredient (id_product, id_recipe, amount) VALUES (1,2,'4 шт покрупнее');
 INSERT INTO Ingredient (id_product, id_recipe, amount) VALUES (7,2,'400 гр.');
-INSERT INTO Ingredient (id_product, id_recipe) VALUES (5,2);
-INSERT INTO Ingredient (id_product, id_recipe) VALUES (6,2);
+INSERT INTO Ingredient (id_product, id_recipe, amount) VALUES (5,2,'по вкусу');
+INSERT INTO Ingredient (id_product, id_recipe, amount) VALUES (6,2,'');
 
 INSERT INTO Ingredient (id_product, id_recipe, amount) VALUES (1,3,'пол килограмма');
 INSERT INTO Ingredient (id_product, id_recipe, amount) VALUES (5,3,'пол столовой ложки');

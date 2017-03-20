@@ -96,7 +96,7 @@ public class UserDao {
 
                 );
             }
-        catch (Exception e){};
+        catch (Exception e){}
         return user;
 
     }
