@@ -21,7 +21,9 @@ public class User {
 
     private String password; //
 
-    //private ??? photo
+    private Boolean isMale;
+
+
     private byte[] photo;
 
     public User(int id,
@@ -31,6 +33,7 @@ public class User {
                 boolean langRu,
                 String email,
                 String password,
+                Boolean isMale,
                 byte[] photo){
         this.id=id;
        this.firstName=firstName;
@@ -40,7 +43,9 @@ public class User {
        this.email=email;
        this.password=password;
        this.photo=photo;
+       this.isMale = isMale;
     }
+
 
     public String getFirstName() {
         return firstName;
@@ -76,5 +81,9 @@ public class User {
 
     public int getId() {
         return id;
+    }
+
+    public Boolean getIsMale() {
+        return isMale;
     }
 }

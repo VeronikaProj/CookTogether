@@ -30,8 +30,8 @@ public class UserDao {
         try (Connection connection = dataSource.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
                      "INSERT INTO User (first_name, last_name, date_of_birth, lang_Ru," +
-                             "email, password_hash, photo) " +
-                             "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS)) {
+                             "email, password_hash,is_male ,photo) " +
+                             "VALUES (?, ?, ?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS)) {
 
             preparedStatement.setObject(1, user.getFirstName());
             preparedStatement.setObject(2, user.getLastName());
@@ -39,7 +39,8 @@ public class UserDao {
             preparedStatement.setObject(4, user.getLangRu());
             preparedStatement.setObject(5, user.getEmail());
             preparedStatement.setObject(6, user.getPasswordHash());
-            preparedStatement.setObject(7, user.getPhoto());
+            preparedStatement.setObject(7, user.getIsMale());
+            preparedStatement.setObject(8, user.getPhoto());
 
             preparedStatement.executeUpdate();
 
@@ -72,7 +73,7 @@ public class UserDao {
         User user=null;
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement("SELECT id, first_name, last_name, date_of_birth, lang_Ru," +
-                     "email, password_hash, photo " +
+                     "email, password_hash,is_male, photo " +
                      "FROM User WHERE id=?")){
              ResultSet resultSet = statement.executeQuery();
 
@@ -92,6 +93,7 @@ public class UserDao {
                         resultSet.getBoolean("lang_Ru"),
                         resultSet.getString("email"),
                         resultSet.getString("password"),
+                        resultSet.getBoolean("is_female"),
                         blobAsBytes
 
                 );
@@ -123,6 +125,7 @@ public class UserDao {
                         resultSet.getBoolean("lang_Ru"),
                         resultSet.getString("email"),
                         resultSet.getString("password"),
+                        resultSet.getBoolean("is_female"),
                         blobAsBytes
 
                 ));

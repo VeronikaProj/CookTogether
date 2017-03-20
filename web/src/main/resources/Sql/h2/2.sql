@@ -14,12 +14,12 @@ INSERT INTO Product (name) VALUES ('соль');
 INSERT INTO Product (name) VALUES ('перец');
 INSERT INTO Product (name) VALUES ('свинина');
 
-INSERT INTO User (first_name, last_name, date_of_birth, lang_Ru, email, password_hash)
-VALUES ('Наталья','Иванова','1989-03-04',TRUE,'ivanova@tamtam.com','qwerty');
-INSERT INTO User (first_name, last_name, date_of_birth, lang_Ru, email, password_hash)
-VALUES ('Ирина','Васильева','1970-02-11',TRUE,'ir_vas@tamtam.com','asdfgh');
-INSERT INTO User (first_name, last_name, date_of_birth, lang_Ru, email, password_hash)
-VALUES ('Лариса','ЗЗЗЗЗ','1969-11-21',TRUE,'lar3@tamtam.com','zxcvbn');
+INSERT INTO User (first_name, last_name, date_of_birth, lang_Ru, email, password_hash,is_male)
+VALUES ('Наталья','Иванова','1989-03-04',TRUE,'ivanova@tamtam.com','qwerty',TRUE);
+INSERT INTO User (first_name, last_name, date_of_birth, lang_Ru, email, password_hash,is_male)
+VALUES ('Ирина','Васильева','1970-02-11',TRUE,'ir_vas@tamtam.com','asdfgh',TRUE);
+INSERT INTO User (first_name, last_name, date_of_birth, lang_Ru, email, password_hash,is_male)
+VALUES ('Лариса','ЗЗЗЗЗ','1969-11-21',TRUE,'lar3@tamtam.com','zxcvbn',TRUE);
 
 
 INSERT INTO Recipe (id_user, name, date, id_type,

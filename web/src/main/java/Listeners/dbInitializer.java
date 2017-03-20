@@ -41,7 +41,7 @@ public class dbInitializer implements ServletContextListener {
                  Statement statement = connection.createStatement();
                  DirectoryStream<Path> paths = Files.newDirectoryStream(sqlDirPath)) {
                 for (Path filePath : paths){
-                    logger.error("File path"+filePath.getFileName());
+
                     if (pattern.matcher(filePath.toFile().getName()).find()) {
                         statement.addBatch(
                                 Files.lines(filePath)

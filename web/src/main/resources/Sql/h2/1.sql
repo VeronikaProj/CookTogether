@@ -1,3 +1,4 @@
+
 CREATE TABLE User (
   id          INT AUTO_INCREMENT PRIMARY KEY,
   first_name  VARCHAR(50)  NOT NULL,
@@ -6,6 +7,7 @@ CREATE TABLE User (
   lang_Ru      BOOL,
   email       VARCHAR(100) NOT NULL,
   password_hash    VARCHAR(255) NOT NULL,
+  is_male   BOOL,
   photo       BLOB,
   UNIQUE (email)
 );
@@ -40,6 +42,8 @@ CREATE TABLE Recipe (
   FOREIGN KEY (id_picture) REFERENCES Picture (id),
   FOREIGN KEY (id_user) REFERENCES User (id),
 );
+
+
 CREATE TABLE Ingredient (
   id            INT AUTO_INCREMENT PRIMARY KEY,
 
