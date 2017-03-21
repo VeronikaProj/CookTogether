@@ -33,6 +33,7 @@ public class dbInitializer implements ServletContextListener {
         @Override
         public void contextInitialized(ServletContextEvent sce) {
             logger.info("Server starting");
+
             Pattern pattern = Pattern.compile("^\\d+\\.sql$");
             Path sqlDirPath = Paths.get(
                     sce.getServletContext().getRealPath("/WEB-INF/classes/Sql/h2"));
