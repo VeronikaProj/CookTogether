@@ -8,6 +8,7 @@ public class Ingredient {
     private int id;
     private Product product;
     private String amount;
+    private int recipeId;
 
     public Ingredient(int id,Product product,String amount){
         this.product=product;
@@ -29,5 +30,9 @@ public class Ingredient {
 
     public int getId() {
         return id;
+    }
+
+    public void setRecipeId(int recipeId) {
+        this.recipeId = recipeId;
     }
 }

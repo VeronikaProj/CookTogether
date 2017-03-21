@@ -44,4 +44,50 @@ public class Recipe {
         this.picture=picture;
 
     }
+
+    public User getUser() {
+        return user;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+
+    public byte[] getPicture() {
+        return picture;
+    }
+
+    public DishType getType() {
+        return type;
+    }
+
+    public int getNumberOfPortions() {
+        return numberOfPortions;
+    }
+
+
+    public int getTime() {
+        return time;
+    }
+
+    public int getLikes() {
+        return likes;
+    }
+
+    public ArrayList<Ingredient> getIngredients() {
+        return ingredients;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
+    }
 }

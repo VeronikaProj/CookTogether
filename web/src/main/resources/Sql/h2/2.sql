@@ -23,18 +23,18 @@ VALUES ('Лариса','ЗЗЗЗЗ','1969-11-21',TRUE,'lar3@tamtam.com','zxcvbn'
 
 
 INSERT INTO Recipe (id_user, name, date, id_type,
-                    number_of_portions, period, recipe, likes)
+                    number_of_portions, time, recipe, likes)
 VALUES (1,'жареная картошка','2017-02-11',6,4,'30 минут',
         'Почистить. Помыть. Порезать. Пожарить Посолить',0);
 
 INSERT INTO Recipe (id_user, name, date, id_type,
-                    number_of_portions, period, recipe, likes)
+                    number_of_portions, time, recipe, likes)
 VALUES (2,'Картошка с мясом','2016-12-15',5,4,'1  час 10 мин.',
         'Почистить картошку. Помыть картошку, мясо. Порезать кубиками, посолить, поперчить.' ||
         ' Выложить на протвень. Запекать 1 час',1);
 
 INSERT INTO Recipe (id_user, name, date, id_type,
-                    number_of_portions, period, recipe, likes)
+                    number_of_portions, time, recipe, likes)
 VALUES (3,'Картофельное пюре','2017-03-03',6,4,'40 минут',
         'Почистить. Помыть. Порезать. Отварить в подсолёной воде. Слить воду, растолочь картофкль и добавить молоко',2);
 

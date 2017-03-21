@@ -35,7 +35,7 @@ CREATE TABLE Recipe (
   id_type            INT NOT NULL,
   id_picture         INT,
   number_of_portions INT NOT NULL,
-  period              VARCHAR(100),
+  time               INT,
   recipe              VARCHAR(600),
   likes                INT,
   FOREIGN KEY (id_type) REFERENCES Dish_type (id),
