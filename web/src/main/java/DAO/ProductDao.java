@@ -58,7 +58,7 @@ public class ProductDao {
         return id;
     }
 
-    public Product read(Product id){
+    public Product read(int id){
         Product product=null;
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement("SELECT id, name" +

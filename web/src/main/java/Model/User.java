@@ -8,7 +8,8 @@ import java.time.LocalDate;
 public class User {
 
     private int id;
-
+    public static String FIRST_NAME_KEY = "firstName";
+    public static String USER_ID = "userId";
     private String firstName;
 
     private String lastName;
