@@ -2,6 +2,7 @@ package Model;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Ника on 16.03.2017.
@@ -19,6 +20,7 @@ public class Recipe {
     private String recipe;
     private int likes;
     private ArrayList<Ingredient> ingredients;
+
 
     public Recipe(int id,
                   User user,
@@ -43,6 +45,9 @@ public class Recipe {
         this.ingredients=ingredients;
         this.picture=picture;
 
+    }
+
+    public Recipe() {
     }
 
     public User getUser() {
@@ -89,5 +94,9 @@ public class Recipe {
 
     public int getId() {
         return id;
+    }
+
+    public void setIngredients(ArrayList<Ingredient> ingredients) {
+        this.ingredients = ingredients;
     }
 }

@@ -46,6 +46,12 @@ public class User {
        this.isMale = isMale;
     }
 
+    public User(int id_user, String first_name, String last_name) {
+        this.id=id_user;
+        this.firstName=first_name;
+        this.lastName=last_name;
+    }
+
 
     public String getFirstName() {
         return firstName;

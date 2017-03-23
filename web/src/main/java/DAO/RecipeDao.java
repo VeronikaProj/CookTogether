@@ -1,8 +1,6 @@
 package DAO;
 
-import Model.Ingredient;
-import Model.Product;
-import Model.Recipe;
+import Model.*;
 
 import javax.sql.DataSource;
 import java.sql.*;
@@ -28,10 +26,15 @@ public class RecipeDao {
 //    FOREIGN KEY (id_picture) REFERENCES Picture (id),
 //    FOREIGN KEY (id_user) REFERENCES User (id),
 
-//    public static final String SELECT_ALL_SQL =
-//            "SELECT i.id,p.id, name,date,type,amount " +
-//                    "FROM recipe i,Ingredient p,Picture"+
-//                    "WHERE i.id_product=p.id";
+    public static final String SELECT_ALL_SQL =
+            "SELECT rr.id,rr.id_user,rr.name,date,type_code_name,picture,number_of_portions,date " +
+                    ",time, recipe,likes,id_product,id_user,first_name,last_name, i.id as iId, id_product, " +
+                    "p.name as prodName "+
+                    "FROM Recipe rr JOIN Dish_type t on rr.id_type=t.id JOIN Ingredient i " +
+                    "on rr.id = i.id_recipe INNER JOIN Product p ON i.id_product = p.id " +
+                    "JOIN User u ON rr.id_user=u.id";
+
+
 
     private DataSource dataSource;
 
@@ -95,15 +98,11 @@ public class RecipeDao {
     public int remove(Recipe recipe) {
         int id=-1;
         try (Connection connection = dataSource.getConnection();
-             PreparedStatement preparedStatement0 = connection.prepareStatement("DELETE FROM Ingredient where id_recipe=?");
-             PreparedStatement preparedStatement1 = connection.prepareStatement("DELETE FROM Recipe where id=?")){
+             PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM Recipe where id=?");){
 
-            preparedStatement0.setObject(1,recipe.getId());
-            preparedStatement0.executeUpdate();
+            preparedStatement.setObject(1,recipe.getId());
 
-            preparedStatement1.setObject(1,recipe.getId());
-            preparedStatement1.executeUpdate();
-
+            preparedStatement.executeUpdate();
             id=recipe.getId();
 
         }
@@ -112,47 +111,59 @@ public class RecipeDao {
         return id;
     }
 
-//    public Ingredient read(Ingredient id){
-//        Ingredient ingredient=null;
-//        try (Connection connection = dataSource.getConnection();
-//             PreparedStatement statement = connection.prepareStatement("SELECT name,i.id,p.id, name,amount " +
-//                     "FROM ingredient i,product p"+
-//                     "WHERE p.id=i.id_product AND id=?")){
-//            ResultSet resultSet = statement.executeQuery();
-//            Product product=new Product(
-//                    resultSet.getInt("p.id"),
-//                    resultSet.getString("name")
-//            );
-//            ingredient=new Ingredient(
-//                    resultSet.getInt("i.id"),
-//                    product,
-//                    resultSet.getString("amount")
-//            );
-//        }
-//        catch (Exception e){};
-//        return ingredient;
-//
-//    }
-//
-//    public List<Product> getAll() {
-//        List<Product> products = new ArrayList<>();
-//
-//        try (Connection connection = dataSource.getConnection();
-//             Statement statement = connection.createStatement();
-//             ResultSet resultSet = statement.executeQuery(SELECT_ALL_SQL)) {
-//
-//            while (resultSet.next()) {
-//                products.add(new Product(
-//                        resultSet.getInt("id"),
-//                        resultSet.getString("name")
-//                ));
-//            }
-//        }
-//        catch (Exception e){
-//
-//        }
-//        return products;
-//    }
+    public List<Recipe> getAll() {
+        List<Recipe> recipes = new ArrayList<>();
+        ArrayList<Ingredient> ingredients=new ArrayList<>();
+        Recipe recipe=new Recipe();
+        int idLast=0;
+        Blob blob;
+        User user;
+        try (Connection connection = dataSource.getConnection();
+             Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery(SELECT_ALL_SQL)) {
+           // UserDao userDao=new UserDao(this.getDataSource());
+            while (resultSet.next()) {
+                int idRecipe=resultSet.getInt("r.id");
+                if (idRecipe!=idLast) {
+                    recipe.setIngredients(ingredients);
+                    recipes.add(recipe);
+                    ingredients.clear();
+                    blob =  resultSet.getBlob("photo");
+                    user=new User(resultSet.getInt("id_user"),
+                            resultSet.getString("first_name"),
+                            resultSet.getString("last_name"));
+                    int blobLength = (int) blob.length();
+                    byte[] blobAsBytes = blob.getBytes(1, blobLength);
+                    blob.free();
+                    recipe=new Recipe(idRecipe, user,
+                                resultSet.getString("name"),
+                                resultSet.getDate("date"),
+                                DishType.valueOf(resultSet.getString("type_code_name")),
+                                resultSet.getInt("number_of _portions"),
+                                resultSet.getInt("time"),
+                                resultSet.getString("recipe"),
+                                resultSet.getInt("likes"),
+                                blobAsBytes,
+                                null
+                            );
+
+
+                }
+                ingredients.add(new Ingredient(resultSet.getInt("iId"),
+                        new Product(resultSet.getInt("id_product"),
+                                resultSet.getString("prodName")),
+                        resultSet.getString("amount")));
+
+
+            }
+            recipe.setIngredients(ingredients);
+            recipes.add(recipe);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return recipes;
+    }
 
 
     public  DataSource getDataSource() {
