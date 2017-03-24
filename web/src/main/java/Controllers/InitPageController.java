@@ -26,7 +26,7 @@ public class InitPageController extends HttpServlet {
 
     @Override
     public void init(ServletConfig config) throws ServletException {
-        recipeDao = (RecipeDao) config.getServletContext().getAttribute("GunDao");
+        recipeDao = (RecipeDao) config.getServletContext().getAttribute("RecipeDao");
     }
 
     @Override
@@ -39,7 +39,7 @@ public class InitPageController extends HttpServlet {
 
         req.setAttribute(WELCOME_KEY, s);
         req.setAttribute(ALL_RECIPES_KEY, recipeDao.getAll());
-
+        int id=recipeDao.getAll().size();
         req.getRequestDispatcher("/WEB-INF/index.jsp")
                 .forward(req, resp);
     }

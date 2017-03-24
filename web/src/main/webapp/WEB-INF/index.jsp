@@ -11,7 +11,7 @@
                  java.util.Collection" %>
 <html>
 <head>
-    <title>${requestScope.get(WelcomeController.WELCOME_KEY)} Welcome to our gun shop!</title>
+    <title>${requestScope.get(WelcomeController.WELCOME_KEY)} Welcome to CookTogether!</title>
 </head>
 <body>
 
@@ -23,7 +23,7 @@
 <table>
     <tr>
         <th>Название</th>
-        <th>Фото</th>
+
         <th>Добавлено</th>
         <th>Категория</th>
     </tr>
@@ -32,7 +32,7 @@
     %>
     <tr>
         <td><%=recipe.getName()%></td>
-        <td><%=recipe.getPicture()%></td>
+
         <td><%=recipe.getUser().getFirstName()%></td>
         <td><%=recipe.getType()%></td>
     </tr>

@@ -1,10 +1,10 @@
 
-INSERT INTO Dish_type (type) VALUES  ('SOUP','суп');
-INSERT INTO Dish_type (type) VALUES  ('DRINK','напиток');
-INSERT INTO Dish_type (type) VALUES  ('SALAD','салат');
-INSERT INTO Dish_type (type) VALUES  ('DESSERT','десерт');
-INSERT INTO Dish_type (type) VALUES  ('MAIN_DISH','основное блюдо');
-INSERT INTO Dish_type (type) VALUES  ('GARNISH','гарнир');
+INSERT INTO Dish_type (type_code_name,type) VALUES  ('SOUP','суп');
+INSERT INTO Dish_type (type_code_name,type) VALUES  ('DRINK','напиток');
+INSERT INTO Dish_type (type_code_name,type) VALUES  ('SALAD','салат');
+INSERT INTO Dish_type (type_code_name,type) VALUES  ('DESSERT','десерт');
+INSERT INTO Dish_type (type_code_name,type) VALUES  ('MAIN_DISH','основное блюдо');
+INSERT INTO Dish_type (type_code_name,type) VALUES  ('GARNISH','гарнир');
 
 INSERT INTO Product (name) VALUES ('картофель');
 INSERT INTO Product (name) VALUES ('молоко');
@@ -24,7 +24,7 @@ VALUES ('Лариса','ЗЗЗЗЗ','1969-11-21',TRUE,'lar3@tamtam.com','zxcvbn'
 
 INSERT INTO Recipe (id_user, name, date, id_type,
                     number_of_portions, time, recipe, likes)
-VALUES (1,'жареная картошка','2017-02-11',6,4,'30',
+VALUES (1,'жареная картошка','2017-02-11',6,4,30,
         'Почистить. Помыть. Порезать. Пожарить Посолить',0);
 
 INSERT INTO Recipe (id_user, name, date, id_type,
@@ -35,7 +35,7 @@ VALUES (2,'Картошка с мясом','2016-12-15',5,4,70,
 
 INSERT INTO Recipe (id_user, name, date, id_type,
                     number_of_portions, time, recipe, likes)
-VALUES (3,'Картофельное пюре','2017-03-03',6,4,'40',
+VALUES (3,'Картофельное пюре','2017-03-03',6,4,40,
         'Почистить. Помыть. Порезать. Отварить в подсолёной воде. Слить воду, растолочь картофкль и добавить молоко',2);
 
 INSERT INTO Ingredient (id_product, id_recipe, amount) VALUES (1,1,'пол килограмма');

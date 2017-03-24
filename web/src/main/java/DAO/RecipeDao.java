@@ -27,12 +27,12 @@ public class RecipeDao {
 //    FOREIGN KEY (id_user) REFERENCES User (id),
 
     public static final String SELECT_ALL_SQL =
-            "SELECT rr.id,rr.id_user,rr.name,date,type_code_name,picture,number_of_portions,date " +
-                    ",time, recipe,likes,id_product,id_user,first_name,last_name, i.id as iId, id_product, " +
+            "SELECT rr.id as idRecipe,rr.id_user,rr.name,date,type_code_name,picture,number_of_portions,date " +
+                    ",time, recipe,likes,id_product,id_user,first_name,last_name,amount, i.id as iId, id_product, " +
                     "p.name as prodName "+
                     "FROM Recipe rr JOIN Dish_type t on rr.id_type=t.id JOIN Ingredient i " +
                     "on rr.id = i.id_recipe INNER JOIN Product p ON i.id_product = p.id " +
-                    "JOIN User u ON rr.id_user=u.id";
+                    "JOIN User u ON rr.id_user=u.id ORDER BY rr.id";
 
 
 
@@ -123,23 +123,27 @@ public class RecipeDao {
              ResultSet resultSet = statement.executeQuery(SELECT_ALL_SQL)) {
            // UserDao userDao=new UserDao(this.getDataSource());
             while (resultSet.next()) {
-                int idRecipe=resultSet.getInt("r.id");
+                int idRecipe=resultSet.getInt("idRecipe");
                 if (idRecipe!=idLast) {
                     recipe.setIngredients(ingredients);
                     recipes.add(recipe);
                     ingredients.clear();
-                    blob =  resultSet.getBlob("photo");
+                    blob =  resultSet.getBlob("picture");
                     user=new User(resultSet.getInt("id_user"),
                             resultSet.getString("first_name"),
                             resultSet.getString("last_name"));
-                    int blobLength = (int) blob.length();
-                    byte[] blobAsBytes = blob.getBytes(1, blobLength);
-                    blob.free();
+                    //int blobLength = (int) blob.length();
+
+                    byte[] blobAsBytes;
+                    if(blob==null)
+                        blobAsBytes=null;
+                    else {blobAsBytes=blob.getBytes(1, (int)blob.length());
+                    blob.free();};
                     recipe=new Recipe(idRecipe, user,
                                 resultSet.getString("name"),
                                 resultSet.getDate("date"),
                                 DishType.valueOf(resultSet.getString("type_code_name")),
-                                resultSet.getInt("number_of _portions"),
+                                resultSet.getInt("number_of_portions"),
                                 resultSet.getInt("time"),
                                 resultSet.getString("recipe"),
                                 resultSet.getInt("likes"),
@@ -148,12 +152,13 @@ public class RecipeDao {
                             );
 
 
+
                 }
                 ingredients.add(new Ingredient(resultSet.getInt("iId"),
                         new Product(resultSet.getInt("id_product"),
                                 resultSet.getString("prodName")),
                         resultSet.getString("amount")));
-
+                idLast=idRecipe;
 
             }
             recipe.setIngredients(ingredients);
@@ -162,6 +167,7 @@ public class RecipeDao {
         catch (Exception e){
             e.printStackTrace();
         }
+        recipes.remove(0);
         return recipes;
     }
 
