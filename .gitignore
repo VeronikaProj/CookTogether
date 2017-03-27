@@ -27,7 +27,7 @@ local.properties
 
 .gradle
 build
-
+notes.txt
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
