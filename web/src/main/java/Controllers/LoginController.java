@@ -2,6 +2,7 @@ package Controllers;
 
 import DAO.RecipeDao;
 import DAO.UserDao;
+import Model.User;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -18,6 +19,10 @@ import java.io.IOException;
 public class LoginController extends HttpServlet {
 
     private UserDao userDao;
+    static final String USER_ID="userId";
+    static final String USER_NAME="userName";
+    private String email;
+    private String password;
 
     @Override
     public void init(ServletConfig config) throws ServletException {
@@ -26,8 +31,21 @@ public class LoginController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String email=request.getParameter("email");
-        String password=request.getParameter("password");
+        email = request.getParameter("email");
+        password = request.getParameter("password");
+
+        User user=userDao.getUserByEmail(email);
+        if ((user==null)||(!user.getPasswordHash().equals(password))){
+            request.getRequestDispatcher("/loginError").forward(request,response);
+        }
+        else {
+            String name =user.getFirstName()+" "+user.getLastName();
+                    request.getSession().setAttribute(USER_ID, user.getId());
+            request.getSession().setAttribute(USER_NAME, name);
+            request.getRequestDispatcher("/").forward(request,response);
+        }
+
+
 
     }
 
@@ -35,8 +53,5 @@ public class LoginController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
-    protected void checkPassword(){
 
-
-    }
 }

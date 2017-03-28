@@ -12,6 +12,7 @@
     <title></title>
 </head>
 <body>
+
 <jsp:useBean id="resourceProp" type="internationalization.ResourceProperty" scope="request"/>
 <h1>
     Регистрация
@@ -23,7 +24,7 @@
         <label for="email" >${resourceProp.getValue("email")}</label><br />
         <input type="email" name="email"  required/><br /><br />
 
-        <label for="password" >${resourceProp.getValue("email")}</label><br />
+        <label for="password" >${resourceProp.getValue("password")}</label><br />
         <input  name="password" required  /><br /><br />
 
 

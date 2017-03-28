@@ -135,5 +135,33 @@ public class UserDao {
     }
 
 
+    public User getUserByEmail(String email) {
+        User user=null;
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement("SELECT id, first_name, last_name, date_of_birth, lang_Ru," +
+                     "email, password_hash,is_male, photo " +
+                     "FROM User WHERE email=?")){
+            statement.setObject(1,email);
+            ResultSet resultSet = statement.executeQuery();
+            Blob blob=  resultSet.getBlob("photo");
+            int blobLength = (int) blob.length();
+            byte[] blobAsBytes = blob.getBytes(1, blobLength);
+            blob.free();
 
+            user=new User(
+                    resultSet.getInt("id"),
+                    resultSet.getString("first_name"),
+                    resultSet.getString("last_name"),
+                    resultSet.getDate("date_of_birth").toLocalDate(),
+                    resultSet.getBoolean("lang_Ru"),
+                    resultSet.getString("email"),
+                    resultSet.getString("password"),
+                    resultSet.getBoolean("is_female"),
+                    blobAsBytes
+
+            );
+        }
+        catch (Exception e){}
+        return user;
+    }
 }

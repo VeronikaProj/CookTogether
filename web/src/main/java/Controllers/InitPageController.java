@@ -16,7 +16,7 @@ import static Model.User.FIRST_NAME_KEY;
 /**
  * Created by Ника on 21.03.2017.
  */
-@WebServlet("/")
+@WebServlet("/InitPage/")
 public class InitPageController extends HttpServlet {
 
     private RecipeDao recipeDao;
