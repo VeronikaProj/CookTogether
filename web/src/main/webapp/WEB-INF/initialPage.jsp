@@ -5,39 +5,26 @@
   Time: 17:55
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java"
+    import="internationalization.ResourceProperty"%>
 <html>
 <head>
     <title></title>
 </head>
 <body>
+<jsp:useBean id="resourceProp" type="internationalization.ResourceProperty" scope="request"/>
 <h1>
     Регистрация
 </h1>
-<form action="/SessionController" method="post">
+<form action="/login" method="post">
 
 
     <fieldset>
-        <label for="first_name" >Имя</label><br />
-        <input  name="firstName"  required/><br /><br />
+        <label for="email" >${resourceProp.getValue("email")}</label><br />
+        <input type="email" name="email"  required/><br /><br />
 
-        <label for="first_name" >Фамилия</label><br />
-        <input  name="lastName" required  /><br /><br />
-
-        <label for="gender" >Пол</label><br />
-        <input type="radio" name="is_fem" value="true"> женский<Br>
-        <input type="radio" name="is_fem" value="opera"> мужской<Br> <br />
-
-
-
-        <label for="password"> Дата рождения </label>
-        <br /> <input  type="date" name="password"   required /><br /><br />
-
-        <label for="password">Пароль(не менее 6 символов) </label>
-        <br /> <input  name="password"  pattern=".{6,20}" required /><br /><br />
-
-        <label for="email">email</label><br />
-        <input type="email" name="email" required /><br /><br />
+        <label for="password" >${resourceProp.getValue("email")}</label><br />
+        <input  name="password" required  /><br /><br />
 
 
 
