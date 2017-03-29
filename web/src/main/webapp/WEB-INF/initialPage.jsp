@@ -6,7 +6,9 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java"
-    import="internationalization.ResourceProperty"%>
+    import="internationalization.Dictionary"
+         %>
+<%@taglib uri="/WEB-INF/tags.tld" prefix="mytag"%>
 <html>
 <head>
     <title></title>
@@ -14,7 +16,8 @@
 <body>
 
 
-<jsp:useBean id="resourceProp" type="internationalization.ResourceProperty" scope="request"/>
+<jsp:useBean id="dictionary" type="internationalization.Dictionary" scope="application"/>
+<jsp:useBean id="language" type="java.lang.String" scope="session"/>
 <h1>
     Регистрация
 </h1>
@@ -22,15 +25,17 @@
 
 
     <fieldset>
-        <label for="email" >${resourceProp.getValue("email")}</label><br />
-        <input type="email" name="email"  required/><br /><br />
+        <mytag:getword>email</mytag:getword>
+        ${dictionary.getValue(lang,"recipe")}
+        <%--<label for="email" >${dictionary.getValue("en","email")}</label><br />--%>
+        <%--<input type="email" name="email"  required/><br /><br />--%>
 
-        <label for="password" >${resourceProp.getValue("password")}</label><br />
-        <input  name="password" required  /><br /><br />
+        <%--<label for="password" >${resourceProp.getValue("password")}</label><br />--%>
+        <%--<input  name="password" required  /><br /><br />--%>
 
 
 
-        <button type="submit">Зарегестрироваться</button>
+        <%--<button type="submit">Зарегестрироваться</button>--%>
 
         <!--<input type="file" id="fileinput" multiple="multiple" accept="image/*" />-->
 

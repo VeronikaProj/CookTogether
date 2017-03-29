@@ -28,12 +28,9 @@ public class MainPageController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
       HttpSession session=request.getSession();
-
-
-        if (session.getAttribute(USER_ID)==null){
-
-        }
-
+        session.setAttribute(LANGUAGE,RU);
+        request.getRequestDispatcher("/WEB-INF/initialPage.jsp")
+                .forward(request,response);
 
     }
 }

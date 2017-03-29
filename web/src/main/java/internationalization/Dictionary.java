@@ -15,8 +15,8 @@ public class Dictionary {
 
     public Dictionary(String base){
 
-        enWords=new ResourceProperty(base,new Locale("ru","Ru"));
-        ruWords=new ResourceProperty(base,Locale.ENGLISH);
+        ruWords=new ResourceProperty(base,new Locale("ru","Ru"));
+        enWords=new ResourceProperty(base,Locale.ENGLISH);
 
     }
     public String getValue (String language,String key){
