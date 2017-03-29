@@ -13,6 +13,7 @@
 </head>
 <body>
 
+
 <jsp:useBean id="resourceProp" type="internationalization.ResourceProperty" scope="request"/>
 <h1>
     Регистрация

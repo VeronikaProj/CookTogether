@@ -9,8 +9,10 @@ import java.util.ResourceBundle;
  */
 public class ResourceProperty {
     ResourceBundle bundle;
-    public ResourceProperty(Locale locale){
-        bundle= ResourceBundle.getBundle("prop.properties",locale);
+    public ResourceProperty(String base,Locale locale){
+        bundle= ResourceBundle.
+                getBundle(base,locale);
+//         getBundle("resorces/internationalization/prop.properties",locale);
     }
     public String getValue(String key){
         return bundle.getString(key);
