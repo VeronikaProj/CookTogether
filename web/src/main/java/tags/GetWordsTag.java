@@ -29,7 +29,7 @@ private String bodyString;
             String str=dictionary.getValue(language,getBodyContent().getString());
             pageContext.getOut().write(str);
 
-            pageContext.getOut().write("i'm tired :(");
+            //pageContext.getOut().write("i'm tired :(");
         } catch (IOException e) {
             e.printStackTrace();
         }

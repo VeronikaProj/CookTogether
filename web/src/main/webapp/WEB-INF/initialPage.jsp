@@ -16,32 +16,55 @@
 <body>
 
 
-<jsp:useBean id="dictionary" type="internationalization.Dictionary" scope="application"/>
-<jsp:useBean id="language" type="java.lang.String" scope="session"/>
-<h1>
-    Регистрация
-</h1>
-<form action="/login" method="post">
+<%--<jsp:useBean id="dictionary" type="internationalization.Dictionary" scope="application"/>--%>
+<%--<jsp:useBean id="language" type="java.lang.String" scope="session"/>--%>
+
+<body style="width: 1000px;">
+<header style="min-height: 30px; background-color: aqua;"><h1>
+    COOK TOGETHER!
+</h1></header>
+<aside style="float: left; width: 300px; background-color: red; min-height: 200px;">
+    <form action="/login" method="post">
 
 
-    <fieldset>
-        <mytag:getword>email</mytag:getword>
-        ${dictionary.getValue(lang,"recipe")}
-        <%--<label for="email" >${dictionary.getValue("en","email")}</label><br />--%>
-        <%--<input type="email" name="email"  required/><br /><br />--%>
-
-        <%--<label for="password" >${resourceProp.getValue("password")}</label><br />--%>
-        <%--<input  name="password" required  /><br /><br />--%>
+        <fieldset>
 
 
+            <%--<label for="email" >${dictionary.getValue("en","email")}</label><br />--%>
+            <%--<input type="email" name="email"  required/><br /><br />--%>
+            <label for="email" ><mytag:getword>email</mytag:getword></label><br />
+            <input type="email" name="email"  required/><br /><br />
+            <label for="password" ><mytag:getword>password</mytag:getword></label><br />
+            <input  name="password" required  /><br /><br />
 
-        <%--<button type="submit">Зарегестрироваться</button>--%>
 
-        <!--<input type="file" id="fileinput" multiple="multiple" accept="image/*" />-->
+            <button type="submit"><mytag:getword>login</mytag:getword></button>
 
-    </fieldset>
+            <!--<input type="file" id="fileinput" multiple="multiple" accept="image/*" />-->
 
-</form>
+        </fieldset>
+
+    </form>
+</aside>
+<section style="float: right; width: 700px; background-color: blue; min-height: 500px;">
+    <article class="recipe-box" style="background-color: blueviolet; width: 300px; margin: 0 auto;">
+        <img style="display:block; width: 300px; height: 300px;" src="../../../resources/pictures/drink.gif" alt="">
+        <p>Автор: <a href=""></a></p>
+        <p>Ингридиенты: <a href=""></a></p>
+        <p>Дата: <a href=""></a></p>
+        <p>Категория: <a href=""></a></p>
+    </article>
+    <article class="recipe-box" style="background-color: blueviolet; width: 300px; margin: 0 auto;">
+        <img style="display:block; width: 300px; height: 300px;" src="../../../resources/pictures/drink.gif" alt="">
+        <p>Автор: <a href=""></a></p>
+        <p>Ингридиенты: <a href=""></a></p>
+        <p>Дата: <a href=""></a></p>
+        <p>Категория: <a href=""></a></p>
+    </article>
+</section>
+<footer style="min-height: 30px; background-color: aqua; clear: both;"></footer>
+
+
 
 <a href="signupEn.html">Switch to English</a>
 
