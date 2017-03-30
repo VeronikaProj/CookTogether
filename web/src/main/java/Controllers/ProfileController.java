@@ -33,20 +33,21 @@ public class ProfileController extends HttpServlet {
         int targetId;
         try {
              id = (int) session.getAttribute(ID);
+            try {
+                targetId = Integer.parseInt(request.getParameter(ID));
+            }catch (NullPointerException|NumberFormatException e) {targetId=id;}
+            User u;
+            u=userDao.read(targetId);
+            request.setAttribute(USER,u);
+            String path="";
+            if (id==targetId)
+                path="/WEB-INF/myProfile";
+            else path="/WEB-INF/profile";
+            request.getRequestDispatcher(path).forward(request,response);
 
         }
-        catch (NullPointerException e)
-        {request.getRequestDispatcher("/WEB-INF/loginError").forward(request,response);}
-        try {
-             targetId = Integer.parseInt(request.getParameter(ID));
-        }catch (NullPointerException e) {targetId=id;}
-        User u;
-        u=userDao.read(targetId);
-        request.setAttribute(USER,u);
-        String path="";
-        if (id==targetId)
-            path="/WEB-INF/myProfile";
-        else path="/WEB-INF/profile";
-        request.getRequestDispatcher(path).forward(request,response);
+        catch (NullPointerException|NumberFormatException e)
+        {request.getRequestDispatcher("/WEB-INF/loginError/index.jsp").forward(request,response);}
+
     }
 }
