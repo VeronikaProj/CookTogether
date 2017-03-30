@@ -7,6 +7,7 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 import javax.sql.DataSource;
+import static Controllers.ParamNames.*;
 
 /**
  * Created by Ника on 21.03.2017.
@@ -25,8 +26,8 @@ public class Injector implements ServletContextListener {
     public void contextInitialized(ServletContextEvent sce) {
         UserDao userDao = new UserDao(dataSource);
         RecipeDao recipeDao = new RecipeDao(dataSource);
-        sce.getServletContext().setAttribute("UserDao", userDao);
-        sce.getServletContext().setAttribute("RecipeDao",recipeDao);
+        sce.getServletContext().setAttribute(USER_DAO, userDao);
+        sce.getServletContext().setAttribute(RECIPE_DAO,recipeDao);
 
     }
 

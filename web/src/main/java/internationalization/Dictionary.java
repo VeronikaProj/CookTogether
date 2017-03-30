@@ -20,7 +20,7 @@ public class Dictionary {
 
     }
     public String getValue (String language,String key){
-
+        if (language==null) language=RU;
         switch (language){
             case EN:{
                 return enWords.getValue(key);

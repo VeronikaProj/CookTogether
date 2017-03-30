@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Optional;
+import static Controllers.ParamNames.*;
 
 import static Model.User.FIRST_NAME_KEY;
 
@@ -21,12 +22,11 @@ public class InitPageController extends HttpServlet {
 
     private RecipeDao recipeDao;
 
-    public static final String WELCOME_KEY = "Welcome";
-    public static final String ALL_RECIPES_KEY = "AllRecipes";
+
 
     @Override
     public void init(ServletConfig config) throws ServletException {
-        recipeDao = (RecipeDao) config.getServletContext().getAttribute("RecipeDao");
+        recipeDao = (RecipeDao) config.getServletContext().getAttribute(RECIPE_DAO);
     }
 
     @Override
