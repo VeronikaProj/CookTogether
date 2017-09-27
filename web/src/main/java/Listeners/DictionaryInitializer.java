@@ -22,6 +22,5 @@ public class DictionaryInitializer implements ServletContextListener {
         Dictionary d=new Dictionary("internationalization.prop");
         sce.getServletContext().setAttribute(DICTIONARY,d);
 
-        //todo: Implement conversion of properties file native2ascii each time app starts
     }
 }

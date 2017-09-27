@@ -6,6 +6,7 @@ import Model.User;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
+import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -36,7 +37,9 @@ public class LoginController extends HttpServlet {
 
         User user=userDao.getUserByEmail(email);
         if ((user==null)||(!user.getPasswordHash().equals(password))){
-            request.getRequestDispatcher("/loginError").forward(request,response);
+            //request.getRequestDispatcher("/loginError").forward(request,response);
+            response.sendRedirect("/loginError");
+          //  ServletResponse.sendRedirect
         }
         else {
             String name =user.getFirstName()+" "+user.getLastName();

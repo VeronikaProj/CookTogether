@@ -49,10 +49,10 @@
 <section style="float: right; width: 700px; background-color: blue; min-height: 500px;">
     <article class="recipe-box" style="background-color: blueviolet; width: 300px; margin: 0 auto;">
         <img style="display:block; width: 300px; height: 300px;" src="../../../resources/pictures/drink.gif" alt="">
-        <p>Автор: <a href=""></a></p>
-        <p>Ингридиенты: <a href=""></a></p>
-        <p>Дата: <a href=""></a></p>
-        <p>Категория: <a href=""></a></p>
+        <p><mytag:getword>author</mytag:getword> <a href=""></a></p>
+        <p><mytag:getword>ingredients</mytag:getword> <a href=""></a></p>
+        <p><mytag:getword>date</mytag:getword> <a href=""></a></p>
+        <p><mytag:getword>dishType</mytag:getword> <a href=""></a></p>
     </article>
     <article class="recipe-box" style="background-color: blueviolet; width: 300px; margin: 0 auto;">
         <img style="display:block; width: 300px; height: 300px;" src="../../../resources/pictures/drink.gif" alt="">
@@ -62,11 +62,13 @@
         <p>Категория: <a href=""></a></p>
     </article>
 </section>
-<footer style="min-height: 30px; background-color: aqua; clear: both;"></footer>
+<footer style="min-height: 30px; background-color: aqua; clear: both;">
+    <a href="/changeLanguage"><mytag:getword>changeLanguage</mytag:getword></a>
+
+    </footer>
 
 
 
-<a href="signupEn.html">Switch to English</a>
 
 
 </body>
