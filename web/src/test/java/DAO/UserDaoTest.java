@@ -28,7 +28,7 @@ import static org.junit.Assert.*;
 /**
  * Created by Ника on 23.03.2017.
  */
-public class RecipeDaoTest {
+public class UserDaoTest {
 
 
 
@@ -51,8 +51,8 @@ public class RecipeDaoTest {
 
         try (
 
-             Statement statement = connection.createStatement();
-             DirectoryStream<Path> paths = Files.newDirectoryStream(sqlDirPath)) {
+                Statement statement = connection.createStatement();
+                DirectoryStream<Path> paths = Files.newDirectoryStream(sqlDirPath)) {
             for (Path filePath : paths) {
 
                 if (pattern.matcher(filePath.toFile().getName()).find()) {
@@ -70,12 +70,10 @@ public class RecipeDaoTest {
 
         } catch (IOException e) {}
 
+        UserDao userDao=new UserDao(dataSource);
 
-            RecipeDao recipeDao = new RecipeDao(dataSource);
-            Collection<Recipe> recipes = recipeDao.getAll();
-            assertNotNull(recipes);
-            assertEquals( 3,recipes.size());
-
+        Collection<User> useri = userDao.getAll();
+        assertEquals( 3,useri.size());
 
 
 

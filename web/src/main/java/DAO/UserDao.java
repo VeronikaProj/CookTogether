@@ -16,7 +16,7 @@ public class UserDao {
 
     public static final String SELECT_ALL_SQL =
             "SELECT id, first_name, last_name, date_of_birth, lang_Ru," +
-                    "email, password_hash, photo " +
+                    "email, password_hash, photo, is_male " +
                     "FROM User";
 
     private DataSource dataSource;
@@ -90,7 +90,7 @@ public class UserDao {
                         resultSet.getBoolean("lang_Ru"),
                         resultSet.getString("email"),
                         resultSet.getString("password"),
-                        resultSet.getBoolean("is_female"),
+                        resultSet.getBoolean("is_male"),
                         blobAsBytes
 
                 );
@@ -102,17 +102,23 @@ public class UserDao {
 
     public List<User> getAll() {
         List<User> users = new ArrayList<>();
-
+        Blob blob;
         try (Connection connection = dataSource.getConnection();
              Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery(SELECT_ALL_SQL)) {
-            Blob blob;
+
             while (resultSet.next()) {
                 blob =  resultSet.getBlob("photo");
 
-                int blobLength = (int) blob.length();
-                byte[] blobAsBytes = blob.getBytes(1, blobLength);
-                blob.free();
+
+                byte[] blobAsBytes;
+               // byte[] blobAsBytes = blob.getBytes(1,(int)blobLength);
+                if(blob==null)
+                    blobAsBytes=null;
+                else {
+                    blobAsBytes=blob.getBytes(1, (int)blob.length());
+                    blob.free();};
+               // blob.free();
 
                 users.add(new User(
                         resultSet.getInt("id"),
@@ -121,8 +127,8 @@ public class UserDao {
                         resultSet.getDate("date_of_birth").toLocalDate(),
                         resultSet.getBoolean("lang_Ru"),
                         resultSet.getString("email"),
-                        resultSet.getString("password"),
-                        resultSet.getBoolean("is_female"),
+                        resultSet.getString("password_hash"),
+                        resultSet.getBoolean("is_male"),
                         blobAsBytes
 
                 ));
