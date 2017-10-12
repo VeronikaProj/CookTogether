@@ -149,10 +149,15 @@ public class UserDao {
                      "FROM User WHERE email=?")){
             statement.setObject(1,email);
             ResultSet resultSet = statement.executeQuery();
+            resultSet.next();
             Blob blob=  resultSet.getBlob("photo");
-            int blobLength = (int) blob.length();
-            byte[] blobAsBytes = blob.getBytes(1, blobLength);
-            blob.free();
+            byte[] blobAsBytes;
+            // byte[] blobAsBytes = blob.getBytes(1,(int)blobLength);
+            if(blob==null)
+                blobAsBytes=null;
+            else {
+                blobAsBytes=blob.getBytes(1, (int)blob.length());
+                blob.free();};
 
             user=new User(
                     resultSet.getInt("id"),
@@ -161,8 +166,8 @@ public class UserDao {
                     resultSet.getDate("date_of_birth").toLocalDate(),
                     resultSet.getBoolean("lang_Ru"),
                     resultSet.getString("email"),
-                    resultSet.getString("password"),
-                    resultSet.getBoolean("is_female"),
+                    resultSet.getString("password_hash"),
+                    resultSet.getBoolean("is_male"),
                     blobAsBytes
 
             );

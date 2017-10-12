@@ -19,7 +19,7 @@ public class Dictionary {
         enWords=new ResourceProperty(base,Locale.ENGLISH);
 
     }
-    public String getValue (String language,String key){
+    public String getValue (String language,String key) throws Exception{
         if (language==null) language=RU;
         switch (language){
             case EN:{

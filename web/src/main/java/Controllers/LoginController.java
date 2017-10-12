@@ -37,18 +37,15 @@ public class LoginController extends HttpServlet {
 
         User user=userDao.getUserByEmail(email);
         if ((user==null)||(!user.getPasswordHash().equals(password))){
-            //request.getRequestDispatcher("/loginError").forward(request,response);
-            response.sendRedirect("/loginError");
-          //  ServletResponse.sendRedirect
+            request.getRequestDispatcher("/WEB-INF/loginError/").forward(request,response);
+
         }
         else {
             String name =user.getFirstName()+" "+user.getLastName();
                     request.getSession().setAttribute(USER_ID, user.getId());
             request.getSession().setAttribute(USER_NAME, name);
-            request.getRequestDispatcher("/").forward(request,response);
+            response.sendRedirect("/news");
         }
-
-
 
     }
 

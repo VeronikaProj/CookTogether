@@ -30,8 +30,15 @@ private String bodyString;
             pageContext.getOut().write(str);
 
 
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
+            try {
+                pageContext.getOut().write(getBodyContent().getString());
+            }
+            catch(IOException e1){
+                e1.printStackTrace();
+            }
+
         }
         return SKIP_BODY;
     }

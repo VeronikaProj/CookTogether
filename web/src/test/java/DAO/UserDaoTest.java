@@ -74,9 +74,10 @@ public class UserDaoTest {
 
         Collection<User> useri = userDao.getAll();
         assertEquals( 3,useri.size());
-
-
-
-
+        User user1=userDao.getUserByEmail("ivanova@tamtam.com");
+        assertNotNull(user1);
+        userDao.remove(user1);
+        useri = userDao.getAll();
+        assertEquals( 2,useri.size());
     }
 }

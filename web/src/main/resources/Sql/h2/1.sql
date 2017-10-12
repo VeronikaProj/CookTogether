@@ -20,7 +20,6 @@ CREATE TABLE Picture (
   id          INT AUTO_INCREMENT PRIMARY KEY,
   picture        BLOB NOT NULL
 );
-
 CREATE TABLE Dish_type (
   id          INT AUTO_INCREMENT PRIMARY KEY,
   type_code_name VARCHAR(10),
