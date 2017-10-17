@@ -19,11 +19,11 @@
     COOK TOGETHER
 </h1></header>
 <aside style="float: left; width: 300px; background-color: red; min-height: 200px;">
-    <p><mytag:getword>new</mytag:getword>&nbsp;<mytag:getword>recipes</mytag:getword></p>
-    <p><mytag:getword>my</mytag:getword>&nbsp;<mytag:getword>recipes</mytag:getword></p>
-    <mytag:getword>add</mytag:getword>&nbsp;<mytag:getword>recipe</mytag:getword>
-    <p><mytag:getword>favorite</mytag:getword></p>
-    <p><mytag:getword>logout</mytag:getword></p>
+<a href="/news">    <p><mytag:getword>new</mytag:getword>&nbsp;<mytag:getword>recipes</mytag:getword></p></a>
+    <a href="/myRecepices">   <p><mytag:getword>my</mytag:getword>&nbsp;<mytag:getword>recipes</mytag:getword></p></a>
+    <a href="/myRecepices">   <mytag:getword>add</mytag:getword>&nbsp;<mytag:getword>recipe</mytag:getword></a>
+    <a href="/myRecepices"><p><mytag:getword>favorite</mytag:getword></p></a>
+    <a href="/logout"><p><mytag:getword>logout</mytag:getword></p></a>
 
 </aside>
 <section style="float: right; width: 700px; background-color: blue; min-height: 500px;">
