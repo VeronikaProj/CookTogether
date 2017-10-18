@@ -79,7 +79,6 @@ public class RecipeDaoTest {
             Collection<Recipe> recipes = recipeDao.getAll();
             assertNotNull(recipes);
             assertEquals( 3,recipes.size());
-
     }
 
     @Test
