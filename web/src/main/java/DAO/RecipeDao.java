@@ -171,6 +171,22 @@ public class RecipeDao {
         return recipes;
     }
 
+    public int numberOfRecipes(){
+        int numberOfRecipes=0;
+        try (Connection connection = dataSource.getConnection();){
+             Statement statement=connection.createStatement();
+             ResultSet resultSet=statement.executeQuery("SELECT COUNT (*) FROM Recipe");
+             resultSet.next();
+             numberOfRecipes=resultSet.getInt(1);
+             int k=1+numberOfRecipes;
+        }
+        catch (SQLException e){
+            e.printStackTrace();} //TODO:написать обработку!!!! в т.ч. логирование
+
+        return numberOfRecipes;
+
+    }
+
     public List<Recipe> getNew(int offset, int amount) {
         List<Recipe> recipes = new ArrayList<>();
         ArrayList<Ingredient> ingredients=new ArrayList<>();
