@@ -11,14 +11,5 @@
         <res-auth>Container</res-auth>
     </resource-ref>
 
-    <servlet>
-        <servlet-name>signupRu</servlet-name>
-        <jsp-file>/signupRu.html</jsp-file>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>signupRu</servlet-name>
-        <url-pattern>/signupRu</url-pattern>
-    </servlet-mapping>
-
 
 </web-app>

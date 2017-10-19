@@ -18,7 +18,7 @@ public class LogOutController extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response){
         try{
             HttpSession session=request.getSession();
-            session.removeAttribute(ID);
+            session.removeAttribute(USER_ID);
             session.removeAttribute(USER_NAME);
             request.getRequestDispatcher("/").forward(request,response);
         }

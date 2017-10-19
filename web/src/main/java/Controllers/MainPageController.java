@@ -18,7 +18,7 @@ import static Controllers.ParamNames.*;
 /**
  * Created by Ника on 28.03.2017.
  */
-@WebServlet("/")
+@WebServlet("")
 
 public class MainPageController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

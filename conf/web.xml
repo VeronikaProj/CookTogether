@@ -4677,13 +4677,6 @@
         <welcome-file>index.htm</welcome-file>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
-    <servlet>
-        <servlet-name>signupRu</servlet-name>
-        <jsp-file>/signupRu.html</jsp-file>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>signupRu</servlet-name>
-        <url-pattern>/signupRu</url-pattern>
-    </servlet-mapping>
+
 
 </web-app>
