@@ -48,7 +48,7 @@
 </aside>
 <section style="float: right; width: 700px; background-color: blue; min-height: 500px;">
     <article class="recipe-box" style="background-color: blueviolet; width: 300px; margin: 0 auto;">
-        <img style="display:block; width: 300px; height: 300px;" src="../../../resources/pictures/drink.gif" alt="">
+        <img style="display:block; width: 300px; height: 300px;" src="pictures/drink.gif" alt="">
         <p><mytag:getword>author</mytag:getword> <a href=""></a></p>
         <p><mytag:getword>ingredients</mytag:getword> <a href=""></a></p>
         <p><mytag:getword>date</mytag:getword> <a href=""></a></p>

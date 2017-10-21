@@ -1,5 +1,7 @@
 package Model;
 
+import java.io.UnsupportedEncodingException;
+
 /**
  * Created by Ника on 16.03.2017.
  */
@@ -22,7 +24,12 @@ public enum DishType {
     }
 
     public String getValue() {
-        return value;
+        try {
+            return new String(value.getBytes("windows-1251"), "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        return "dish_type";
     }
 
     public String getPictureFilename() {
