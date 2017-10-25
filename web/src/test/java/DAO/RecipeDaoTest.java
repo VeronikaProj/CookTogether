@@ -91,4 +91,13 @@ public class RecipeDaoTest {
 
     }
 
+    @Test
+    public void testGetRecipe() throws Exception{
+        RecipeDao recipeDao = new RecipeDao(dataSource);
+       Recipe recipe=recipeDao.getRecipe(2);
+       String expected="Картошка с мясом";
+       expected=new String(expected.getBytes("windows-1251"),  "UTF-8");
+       assertEquals(expected,recipe.getName());
+       }
+
 }

@@ -75,6 +75,7 @@ public class Recipe {
         return numberOfPortions;
     }
 
+    public String getRecipe() {return recipe;   }
 
     public int getTime() {
         return time;
